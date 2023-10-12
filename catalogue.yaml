@@ -41,12 +41,12 @@
       url: https://roboshop-builds.s3.amazonaws.com/catalogue.zip
       dest: /tmp
 
-  - name: extract catalouge artifact
+  - name: extract catalogue artifact
     ansible.builtin.unarchive:
       src: /tmp/catalogue.zip
       dest: /app
       remote_src: yes
-  
+
   - name: install dependencies
     ansible.builtin.command: npm install
     args:
@@ -60,7 +60,7 @@
   - name: deamon reload
     ansible.builtin.systemd:
       daemon_reload: true
-  
+
   - name: copy mongo repo to yum.repos.d
     ansible.builtin.copy:
       src: mongodb.repo
